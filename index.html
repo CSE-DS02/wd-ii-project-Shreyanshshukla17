@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meesho - Online Shopping App</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            meesho: {
+              pink:   '#F43397',
+              purple: '#9B26AF',
+              orange: '#FF6B35',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-50 font-sans text-gray-900">
+
+  <!-- ===== FIXED NAVBAR ===== -->
+  <header id="navbar-root" role="banner"></header>
+
+  <!-- Mobile Nav Drawer -->
+  <nav id="mobile-nav-drawer" aria-label="Mobile navigation" aria-hidden="true"></nav>
+  <div id="mobile-nav-backdrop" class="hidden fixed inset-0 bg-black/50 z-40" aria-hidden="true"></div>
+
+  <!-- ===== MAIN APP SHELL ===== -->
+  <main id="app" class="pt-16">
+
+    <!-- Hero Banner -->
+    <section id="hero-root" aria-label="Promotional banner"></section>
+
+    <!-- Category Shortcuts -->
+    <nav id="category-shortcuts-root" aria-label="Shop by category"></nav>
+
+    <!-- Main content: sidebar + grid -->
+    <div class="max-w-screen-xl mx-auto px-3 sm:px-4 py-6 flex gap-6">
+
+      <!-- Filter Sidebar — desktop persistent -->
+      <aside
+        id="filter-sidebar-root"
+        aria-label="Product filters"
+        class="hidden md:block w-64 flex-shrink-0 self-start sticky top-20"
+      ></aside>
+
+      <!-- Right column: sort + grid -->
+      <div class="flex-1 min-w-0">
+        <!-- Mobile filter trigger + sort control -->
+        <div id="sort-control-root" class="mb-4"></div>
+        <!-- Product grid -->
+        <section id="product-grid-root" aria-label="Product listing"></section>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer-root" role="contentinfo"></footer>
+
+  <!-- ===== PRODUCT DETAIL MODAL ===== -->
+  <div
+    id="modal-overlay"
+    class="hidden fixed inset-0 z-50 bg-black/60 overflow-y-auto"
+    role="presentation"
+    aria-hidden="true"
+  ></div>
+
+  <!-- ===== CART DRAWER ===== -->
+  <aside
+    id="cart-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Shopping Cart"
+    class="cart-drawer fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 flex flex-col"
+  ></aside>
+  <div
+    id="cart-backdrop"
+    class="hidden fixed inset-0 bg-black/50 z-40"
+    aria-hidden="true"
+  ></div>
+
+  <!-- ===== MOBILE FILTER DRAWER ===== -->
+  <aside
+    id="filter-mobile-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Product filters"
+    class="filter-mobile-drawer fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-40 flex flex-col overflow-y-auto"
+  ></aside>
+  <div
+    id="filter-backdrop"
+    class="hidden fixed inset-0 bg-black/50 z-30"
+    aria-hidden="true"
+  ></div>
+
+  <!-- ===== TOAST NOTIFICATION ===== -->
+  <div
+    id="toast"
+    role="alert"
+    aria-live="polite"
+    aria-atomic="true"
+  ></div>
+
+  <!-- ===== APP SCRIPT ===== -->
+  <script src="app.js" defer></script>
+
+</body>
+</html>
